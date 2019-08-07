@@ -3,5 +3,7 @@ branches:
 - master
 projects:
   PECollide:
-    path: ""
+    path: "/"
+        icon: "pecollide.png"
+
 ...
