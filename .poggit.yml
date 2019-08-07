@@ -4,6 +4,6 @@ branches:
 projects:
   PECollide:
     path: "/"
-        icon: "pecollide.png"
+    icon: "pecollide.png"
 
 ...
