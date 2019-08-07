@@ -1,0 +1,7 @@
+name: PECollide
+author: saxavlax001
+description: Make a player collide with players
+main: saxavlax001\pecollide\Main
+version: 0.1dev
+api: [3.0.0]
+load: STARTUP
