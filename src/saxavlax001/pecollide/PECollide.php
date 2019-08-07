@@ -11,7 +11,7 @@ class PECollide implements Listener
     {
 
         $player = $ev->getPlayer();
-
+      
         foreach ($player->getViewers() as $viewer)
         {
             //If player too far, continue
@@ -34,3 +34,12 @@ class PECollide implements Listener
     }
     
 }
+
+    foreach($player->getViewers() as $viewer) {
+        if($player->distance($viewer) > 0.5) continue;
+            $viewer->knockBack($player, 0, $viewer->x - $player->x, $viewer->z - $player->z, 0.2);
+            $player->knockBack($viewer, 0, $player->x - $viewer->x, $player->z - $viewer->z, 0.1);
+            break;
+         }
+       }
+    }
