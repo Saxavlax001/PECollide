@@ -18,20 +18,23 @@ class PECollide implements Listener
             if ($player->distance($viewer) > 0.5) continue;
             //Get speed of that close player
             $speed = abs($player->getMotion()->x) + abs($player->getMotion->z);
-            //If player
+            //If player speed is superior to X
             if ($speed > 2)
             {
+				//Knock Him, you'r running too fast
                 $viewer->knockBack($player, 0, $viewer->x - $player->x, $viewer->z - $player->z, 0.2);
                 $player->knockBack($viewer, 0, $player->x - $viewer->x, $player->z - $viewer->z, 0.1);
             }
-            if (abs($player->getMotion()
-                ->x) + abs($player->getMotion()
-                ->z) < 2)
+            else
             {
+				//Hey, don't move !
                 $ev->setCancelled();
             }
         }
     }
+<<<<<<< HEAD
+}
+=======
     
 }
 
@@ -43,3 +46,4 @@ class PECollide implements Listener
          }
        }
     }
+>>>>>>> e2385bc386d8245006d54ad4ed660b28acce5f5b
