@@ -3,5 +3,5 @@ author: saxavlax001
 description: Make a player collide with players
 main: saxavlax001\pecollide\Main
 version: 1.0
-api: [3.0.0, 3.9.3]
+api: [3.0.0]
 load: STARTUP
