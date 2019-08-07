@@ -17,7 +17,7 @@ class PECollide implements Listener
             //If player too far, continue
             if ($player->distance($viewer) > 0.5) continue;
             //Get speed of that close player
-            $speed = abs($player->getMotion()->x) + abs($player->getMotion->z);
+            $speed = abs($player->getMotion()->x) + abs($player->getMotion()->z);
             //If player
             if ($speed > 2)
             {
