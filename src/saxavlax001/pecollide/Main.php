@@ -11,7 +11,7 @@ class Main extends PluginBase {
     public function onEnable() : void
    {
     //register pecollide
-    $this->getServer()->getPluginManager()->registerEvents(new PECollide($this), $this);
+    $this->getServer()->getPluginManager()->registerEvents(new PECollide(), $this);
    }
 }
 
