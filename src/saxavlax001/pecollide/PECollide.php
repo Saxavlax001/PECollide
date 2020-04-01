@@ -4,6 +4,15 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Server;
 class PECollide implements Listener {
+
+
+    /** @var Main */
+    private $pg;
+
+    public function __construct()
+    {
+
+    }
     public function onMove(PlayerMoveEvent $ev) {
         $player = $ev->getPlayer();
         foreach ($player->getViewers() as $viewer) {
