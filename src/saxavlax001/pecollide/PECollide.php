@@ -13,7 +13,7 @@ use saxavlax001\pecollide\Main;
 
 class PECollide extends Command implements Listener {
 
-    public function __construct(Main $plugin) {
+    public function __construct() {
         parent::__construct("pecollide", "Enables/Disables players collision", "Usage: /pecollide [on/off]", ["pecollide"]);
         $this->setPermission('pecollide.command.use');
     }
