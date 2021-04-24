@@ -1,1 +1,5 @@
-
+---
+#PECollide default config settings
+#Toggle on/off mode
+pecollide: true
+...
