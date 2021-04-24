@@ -16,18 +16,16 @@ class PECollide extends Command implements Listener {
     public function __construct(Main $plugin) {
         parent::__construct("pecollide", "Enables/Disables players collision", "Usage: /pecollide [on/off]", ["pecollide"]);
         $this->setPermission('pecollide.command.use');
-        $this->plugin = $plugin;
     }
   
-      public function execute(CommandSender $sender, string $label, array $args) : bool
-      {
+      public function execute(CommandSender $sender, string $label, array $args){
       if(!$this->testPermission($sender)){
               return true;
        }
   
        if ($sender instanceof Player) {
            if($sender->hasPermission("pecollide.command.use") == true){
-               $peconfig = new Config($this->plugin->getDataFolder() . "config.yml", Config::YAML);
+               $peconfig = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
                $peconfig->getAll();
                if($peconfig->get("pecollide") == false){
                 $peconfig->set("pecollide", true);
@@ -44,7 +42,7 @@ class PECollide extends Command implements Listener {
         return true;
       }
        if($sender instanceof ConsoleCommandSender) {
-        $peconfig = new Config($this->plugin->getDataFolder() . "config.yml", Config::YAML);
+        $peconfig = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
         $peconfig->getAll();
         if($peconfig->get("pecollide") == false){
          $peconfig->set("pecollide", true);
@@ -60,7 +58,7 @@ class PECollide extends Command implements Listener {
    }
 
     public function onMove(PlayerMoveEvent $ev) {
-        $peconfig = new Config($this->plugin->getDataFolder() . "config.yml", Config::YAML);
+        $peconfig = new Config(Main::getInstance()->getDataFolder() . "config.yml", Config::YAML);
         $peconfig->getAll();
         if($peconfig->get("pecollide") == true){
             $player = $ev->getPlayer();
