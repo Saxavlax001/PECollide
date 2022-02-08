@@ -2,8 +2,8 @@ name: PECollide
 author: saxavlax001
 description: Make a player collide with players
 main: saxavlax001\pecollide\Main
-version: 1.0
-api: [3.0.0]
+version: 1.0.0
+api: [4.0.0]
 load: STARTUP
 permissions:
   pecollide.command.use:
