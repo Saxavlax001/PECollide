@@ -4,10 +4,11 @@ namespace saxavlax001\pecollide;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Server;
+use pocketmine\lang\Language;
 use pocketmine\command\Command;
-use pocketmine\command\ConsoleCommandSender;
+use pocketmine\console\ConsoleCommandSender;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\utils\Config;
 use saxavlax001\pecollide\Main;
 
@@ -64,24 +65,24 @@ class PECollide extends Command implements Listener {
             $player = $ev->getPlayer();
             foreach ($player->getViewers() as $viewer) {
                 //If player too far, continue
-                if ($player->distance($viewer) > 0.8) continue;
+                if ((abs($viewer->getPosition()->getX() - $player->getPosition()->getX()) + abs($viewer->getPosition()->getZ() - $player->getPosition()->getZ())) > 0.8) continue;
                 //Get info of that close player
                 $from = $ev->getFrom();
                 $to = $ev->getTo();
                 //distance de depart par rapport au viewer
-                $DistanceFromViewer = $viewer->distance($from);
+                $DistanceFromViewer = $viewer->getPosition()->distanceSquared($from);
                 //distance final par rapport au viewer
-                $DistanceToViewer = $viewer->distance($to);
+                $DistanceToViewer = $viewer->getPosition()->distanceSquared($to);
                 //If i'm going to move in direction of the viewer
                 if ($DistanceFromViewer > $DistanceToViewer) {
-                    $speed = round($from->distance($to), 3);
+                    $speed = round($from->distanceSquared($to), 3);
                     // echo "My speed: $speed - ";
                     //Knock $Player harder, if running fast
                     if ($speed > 0.15) {
                         $knockvalue = $speed / 1.4;
-                        $viewer->knockBack($player, 0, $viewer->x - $player->x, $viewer->z - $player->z, $knockvalue);
-                        $player->knockBack($viewer, 0, $player->x - $viewer->x, $player->z - $viewer->z, $knockvalue);
-                    } else $player->knockBack($viewer, 0, $player->x - $viewer->x, $player->z - $viewer->z, 0.1);
+                        $viewer->knockBack($viewer->getPosition()->getX() - $player->getPosition()->getX(), $viewer->getPosition()->getZ() - $player->getPosition()->getZ(), $knockvalue);
+                        $player->knockBack($player->getPosition()->getX() - $viewer->getPosition()->getX(), $player->getPosition()->getZ() - $viewer->getPosition()->getZ(), $knockvalue);
+                    } else $player->knockBack($player->getPosition()->getX() - $viewer->getPosition()->getX(), $player->getPosition()->getZ() - $viewer->getPosition()->getZ(), 0.1);
                 }
             }
         }
